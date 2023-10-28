@@ -1,68 +1,91 @@
-/* Countdown Container Styles */
+/* App.css */
+.App {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f5f5f5;
+  margin: 0;
+}
+
 #countdown-container {
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-  }
+  text-align: center;
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
 
-  h3{
-    font-family: 'Courier New', Courier, monospace;
-    font-weight:lighter;
-    letter-spacing: 0.1rem;
-  }
-  
-  #countdown {
-    font-size: 2rem;
-    font-family: 'Montserrat', sans-serif;
-    font-weight:bold;
-  }
-  
-  /* Progress Container Styles */
+h3 {
+  font-size: 20px;
+  margin: 10px 0;
+}
 
-  #timer{
-    margin-top: 5rem;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 50vh;
-  }
+#timer {
+  position: relative;
+}
 
-  #progress-container {
-    width: 200px;
-    height: 200px;
-    border: 10px solid #ccc;
-    border-radius: 50%;
-  }
-  
-  #progress-bar {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    background: conic-gradient(#3498db 0% var(--progress), #ecf0f1 var(--progress) 100%);
-  }
+/* App.css */
+#progress-container {
+  position: relative;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  background: transparent;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-  .button-container{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    gap: 1rem;
-  }
+#outer-ring {
+  position: absolute;
+  width: 220px; /* Adjust the initial width of the outer ring */
+  height: 220px; /* Adjust the initial height of the outer ring */
+  border-radius: 80%;
+  background: transparent;
+  border: 20px solid #e80c25; /* Red border for the outer ring */
+  transform: rotate(90deg);
+  transform-origin: center;
+  transition: border-width 0.3s ease;
+}
 
-  button{
-    position: relative;
-    top: 10px;
-    height: 2rem;
-    width: 6rem;
-    color: rgb(117, 56, 117);
-    background-color: rgb(255, 255, 255);
-    cursor: pointer;
-    border-radius: 1rem;
-    border: 1px solid #ffffff;
-    box-shadow: 5px 5px 10px #aaa;
-    letter-spacing: 1px;
-    font-family: 'Courier New', Courier, monospace;
-  }
+#progress-bar {
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  background: transparent;
+  border: 10px solid transparent;
+  transform: rotate(90deg);
+  transform-origin: center;
+  transition: border-width 0.3s ease;
+}
 
- 
+.time-remaining {
+  font-size: 24px;
+  color: #3498db;
+  font-weight: bold;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-90deg); /* Rotate time display to match the ring */
+}
+
+button {
+  display: block;
+  margin: 10px auto;
+  padding: 10px 20px;
+  font-size: 16px;
+  background: #3498db;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background: #e80c25;
+}
