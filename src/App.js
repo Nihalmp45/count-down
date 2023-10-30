@@ -3,7 +3,7 @@ import { PieChart } from 'react-minimal-pie-chart';
 import './App.css'
 
 const App = () => {
-  const initialTime = 60; // 1 minute in seconds
+  const initialTime = 60; // 60 seconds
   const [timeRemaining, setTimeRemaining] = useState(initialTime);
   const totalTime = initialTime;
 
@@ -17,7 +17,7 @@ const App = () => {
     return () => clearInterval(timer);
   }, [timeRemaining]);
 
-  const progress = (timeRemaining / totalTime) * 100;
+  const progress = timeRemaining <= 60 ? (timeRemaining / totalTime) * 100 : 100;
 
   const addTime = (seconds) => {
     setTimeRemaining(timeRemaining + seconds);
@@ -40,12 +40,11 @@ const App = () => {
       />
       <div style={{ fontSize: '24px', fontWeight: 'bold' }}>{timeRemaining}</div>
       <div className='button-container'>
-      <button onClick={() => addTime(10)}>+ 10 sec</button>
-      <button onClick={resetTime}>Reset</button>
+        <button onClick={() => addTime(10)}>+ 10 sec</button>
+        <button onClick={resetTime}>Reset</button>
       </div>
     </div>
   );
 };
 
-
-export default App
+export default App;
